@@ -1,0 +1,5 @@
+Year = input('What year were you born? ')
+print(type(Year))
+Age = 2026 - int(Year)
+print(type(Age))
+print(Age)
