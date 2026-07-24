@@ -25,3 +25,14 @@ def main():
     surface = surface.convert()
 
     drawGrid()
+
+    snake = Snake()
+    food = Food()
+
+    while True:
+        clock.tick(10)
+
+        # snake + food subfuctions
+        drawGrid(surface)
+        pygame.display.update()
+main()
