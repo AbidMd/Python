@@ -5,7 +5,20 @@ import random
 pygame.init()
 
 class Snake(object):
-    pass
+    def __init__(self):
+        self.length = 1
+        self.positions = [((WIDTH / 2), (HEIGHT / 2))]
+        self.direction = random.choice([UP, DOWN, LEFT, RIGHT])
+        self.color = green
+
+    def get_head_position(self):
+        return self.positions[0]
+
+    def turn(self, point):
+        if self.length > 1 and (point[0] * -1, point[1] * -1) == self.direction:
+            return
+        else:
+            self.direction = point
 
 class Food(object):
     pass
@@ -30,6 +43,12 @@ GRID_HEIGHT = HEIGHT / GRID_SIZE
 # Colors
 gray1 = (93, 216, 228)
 gray2 = (84, 194, 205)
+green = (0, 255, 0)
+
+UP = (0, -1)
+DOWN = (0, 1)
+LEFT = (-1, 0)
+RIGHT = (1, 0) 
 
 def main():
     clock = pygame.time.Clock()
