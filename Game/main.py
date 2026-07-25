@@ -20,6 +20,18 @@ class Snake(object):
         else:
             self.direction = point
 
+    def move(self):
+        cur = self.get_head_position()
+        x, y = self.direction
+        new = (((cur[0] + (x * GRID_SIZE)) % WIDTH), (cur[1] + (y * GRID_SIZE)) % HEIGHT)
+        if len(self.positions) > 2 and new in self.positions[2:]:
+            self.reset()
+        else:
+            self.positions.insert(0, new)
+            if len(self.positions) > self.length:
+                self.positions.pop()
+                
+
 class Food(object):
     pass
 
