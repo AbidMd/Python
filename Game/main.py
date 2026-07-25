@@ -36,6 +36,28 @@ class Snake(object):
         self.length = 1
         self.positions = [((WIDTH / 2), (HEIGHT / 2))]
         self.direction = random.choice([UP, DOWN, LEFT, RIGHT])
+
+    def draw(self, surface):
+        for p in self.positions:
+            r = pygame.Rect((p[0], p[1]), (GRID_SIZE, GRID_SIZE))
+            pygame.draw.rect(surface, self.color, r)
+            pygame.draw.rect(surface, black, r, 1)
+
+    def handle_keys(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_UP:
+                    self.turn(UP)
+                elif event.key == pygame.K_DOWN:
+                    self.turn(DOWN)
+                elif event.key == pygame.K_LEFT:
+                    self.turn(LEFT)
+                elif event.key == pygame.K_RIGHT:
+                    self.turn(RIGHT)
+
 class Food(object):
     pass
 
@@ -60,6 +82,7 @@ GRID_HEIGHT = HEIGHT / GRID_SIZE
 gray1 = (93, 216, 228)
 gray2 = (84, 194, 205)
 green = (0, 255, 0)
+black = (0, 0, 0)
 
 UP = (0, -1)
 DOWN = (0, 1)
