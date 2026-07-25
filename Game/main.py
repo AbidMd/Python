@@ -30,8 +30,12 @@ class Snake(object):
             self.positions.insert(0, new)
             if len(self.positions) > self.length:
                 self.positions.pop()
-                
 
+
+    def reset(self):
+        self.length = 1
+        self.positions = [((WIDTH / 2), (HEIGHT / 2))]
+        self.direction = random.choice([UP, DOWN, LEFT, RIGHT])
 class Food(object):
     pass
 
